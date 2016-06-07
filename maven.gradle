@@ -1,0 +1,42 @@
+apply plugin: 'com.github.dcendents.android-maven'
+
+group = 'com.forkingcode.espresso.contrib'
+
+install {
+    repositories.mavenInstaller {
+        // This generates POM.xml with proper parameters
+        pom {
+            project {
+                packaging 'aar'
+                groupId 'com.forkingcode.espress.contrib'
+                artifactId libraryName
+                version libraryVersion
+
+                // Add your description here
+                name libraryName
+                description libraryDescription
+                url 'https://github.com/joerogers/EspressoDescendantActions'
+
+                // Set your license
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id 'joerogers'
+                        name 'Joe Rogers'
+                    }
+                }
+                scm {
+                    connection 'https://github.com/joerogers/EspressoDescendantActions.git'
+                    developerConnection 'https://github.com/joerogers/EspressoDescendantActions.git'
+                    url 'https://github.com/joerogers/EspressoDescendantActions'
+                }
+            }
+        }
+    }
+}

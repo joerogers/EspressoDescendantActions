@@ -1,0 +1,64 @@
+apply from: '../maven.gradle'
+apply plugin: 'com.jfrog.bintray'
+
+version = libraryVersion
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += configurations.compile
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    options.linksOffline("http://developer.android.com/reference", "${android.sdkDirectory}/docs/reference");
+    failOnError false
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+// Bintray
+Properties properties = new Properties()
+File localProperties = project.rootProject.file('../bintray.properties');
+if (localProperties.exists()) {
+    properties.load(localProperties.newDataInputStream())
+} else {
+    properties.put("bintray.user", '')
+    properties.put("bintray.apikey", '')
+}
+
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+    dryRun = bintrayDryRun
+    publish = true
+
+    configurations = ['archives']
+    pkg {
+        repo = 'maven'
+        name = libraryName
+        desc = libraryDescription
+        websiteUrl = 'https://github.com/joerogers/EspressoDescendantActions'
+        vcsUrl = 'https://github.com/joerogers/EspressoDescendantActions.git'
+        issueTrackerUrl = 'https://github.com/joerogers/EspressoDescendantActions/issues'
+        licenses = ["Apache-2.0"]
+
+        version {
+            name = libraryVersion
+            // Optional. The passphrase for GPG signing'
+            // gpg {
+            //    sign = true //Determines whether to GPG sign the files. The default is false
+            //    passphrase = properties.getProperty("bintray.gpg.password")
+            //}
+        }
+    }
+}

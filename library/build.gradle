@@ -18,7 +18,17 @@ android {
     }
 }
 
+ext {
+    espressoVersion = "2.2.2"
+    libraryName = 'espresso-descendant-actions'
+    libraryDescription = 'Custom espresso actions for working with descendant views'
+    libraryVersion = rootProject.libraryVersion
+    bintrayDryRun = rootProject.dryRun
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile "com.android.support.test.espresso:espresso-core:2.2.2"
+    compile "com.android.support.test.espresso:espresso-core:${espressoVersion}"
 }
+
+apply from: '../bintray.gradle'
