@@ -14,16 +14,25 @@
  * limitations under the License.
  */
 
-package com.forkingcode.espresso.contrib;
+package com.example.espresso.contrib.activity;
 
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+
+import com.example.espresso.contrib.R;
+import com.example.espresso.contrib.adapter.MainAdapter;
+import com.example.espresso.contrib.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        binding.recyclerView.setAdapter(new MainAdapter());
     }
 }

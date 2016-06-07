@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">EspressoDescendantActions</string>
+    <string name="app_name">Espresso Descendant Actions</string>
+
+    <string name="favorite">Favorite</string>
+    <string name="unfavorite">Unfavorite</string>
+
+    <string name="activity_detail">Item Detail</string>
 </resources>
