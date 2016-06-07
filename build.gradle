@@ -23,3 +23,10 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+def isDryRun() {
+    if (project.hasProperty('dryRun')) {
+        return project.dryRun.toBoolean()
+    }
+    return true
+}

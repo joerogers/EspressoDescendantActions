@@ -1,5 +1,38 @@
-# EspressoDescendantActions
+# Espresso Descendant Actions
 
+Basic Usage
+-----------
+
+Checking state of a descendant view:
+
+```
+onView(withId(R.id.recyclerView))
+     .perform(
+          actionOnItemAtPosition(25, DescendantViewActions.checkViewAction(
+               selectedDescendantsMatch(withId(R.id.favoriteButton),
+                                withContentDescription(R.string.favorite))))
+     );
+```
+
+
+Performing an action on a descendant view:
+
+```
+onView(withId(R.id.recyclerView))
+     .perform(
+          actionOnItemAtPosition(25,
+               DescendantViewActions.performDescendantAction(withId(R.id.favoriteButton), click()))
+     );
+```
+
+Gradle
+------
+
+```
+dependencies {
+    com.forkingcode.espresso-descendant-actions:espresso-descendant-actions:{latest version above}'
+}
+```
 
 License
 -------

@@ -8,7 +8,7 @@ install {
         pom {
             project {
                 packaging 'aar'
-                groupId 'com.forkingcode.espress.contrib'
+                groupId 'com.forkingcode.espresso.contrib'
                 artifactId libraryName
                 version libraryVersion
 

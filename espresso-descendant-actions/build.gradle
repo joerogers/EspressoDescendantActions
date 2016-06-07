@@ -23,7 +23,7 @@ ext {
     libraryName = 'espresso-descendant-actions'
     libraryDescription = 'Custom espresso actions for working with descendant views'
     libraryVersion = rootProject.libraryVersion
-    bintrayDryRun = rootProject.dryRun
+    bintrayDryRun = isDryRun()
 }
 
 dependencies {
