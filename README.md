@@ -10,24 +10,25 @@ Basic Usage
 Checking state of a descendant view:
 
 ```
-onView(withId(R.id.recyclerView))
-     .perform(
-          actionOnItemAtPosition(5, DescendantViewActions.checkViewAction(
-               selectedDescendantsMatch(withId(R.id.favoriteButton),
-                                withContentDescription(R.string.favorite))))
-     );
+onView(withId(R.id.recyclerView)).perform(
+      actionOnItemAtPosition(5, DescendantViewActions.checkViewAction(
+            selectedDescendantsMatch(withId(R.id.favoriteButton),
+                             withContentDescription(R.string.favorite))))
+);
 ```
 
 
 Performing an action on a descendant view:
 
 ```
-onView(withId(R.id.recyclerView))
-     .perform(
-          actionOnItemAtPosition(5,
-               DescendantViewActions.performDescendantAction(withId(R.id.favoriteButton), click()))
-     );
+onView(withId(R.id.recyclerView)).perform(
+      actionOnItemAtPosition(5,
+            DescendantViewActions.performDescendantAction(withId(R.id.favoriteButton), click()))
+);
 ```
+
+See the sample project for a functional example.
+
 
 Gradle
 ------

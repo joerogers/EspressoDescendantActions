@@ -47,18 +47,16 @@ public class MainActivityTest {
         // By default you could only test direct actions on a recycler view. For example
         // you could "click" the view, navigate to another activity and verify conditions.
 
-        // First position recycler view
-        onView(withId(R.id.recyclerView))
-                .perform(
-                        scrollToPosition(15)
-                );
+        // Chaining several RecyclerViewActions together.
+        onView(withId(R.id.recyclerView)).perform(
 
-        // Perform action at position
-        onView(withId(R.id.recyclerView))
-                .perform(
-                        actionOnItemAtPosition(15, click())
-                );
+                // First position the recycler view. Necessary to allow the layout
+                // manager perform the scroll operation
+                scrollToPosition(15),
 
+                // Click the item to trigger navigation to detail view
+                actionOnItemAtPosition(15, click())
+        );
 
         // Check detail view
         onView(withId(R.id.favoriteStatus)).check(matches(withText(R.string.unfavorite)));
@@ -71,35 +69,26 @@ public class MainActivityTest {
     public void testFavoriteToggle() throws Exception {
         // More advanced test case testing toggling the favorite status on a particular row
 
-        // Again first position recycler view
-        onView(withId(R.id.recyclerView))
-                .perform(
-                        scrollToPosition(25)
-                );
+        // Chaining several actions together on the recycler view
+        onView(withId(R.id.recyclerView)).perform(
 
-        // With the descendant actions provided, you can check the status of a descendant view using
-        // a standard check
-        onView(withId(R.id.recyclerView))
-                .perform(
-                        actionOnItemAtPosition(25, DescendantViewActions.checkViewAction(
-                                selectedDescendantsMatch(withId(R.id.favoriteButton),
-                                        withContentDescription(R.string.favorite))))
-                );
+                // First position the recycler view
+                scrollToPosition(25),
 
-        // Or perform an action on a descendant view.
-        onView(withId(R.id.recyclerView))
-                .perform(
-                        actionOnItemAtPosition(25,
-                                DescendantViewActions.performDescendantAction(withId(R.id.favoriteButton), click()))
-                );
+                // With the descendant actions provided, you can check the status of a descendant view using
+                // a standard check
+                actionOnItemAtPosition(25, DescendantViewActions.checkViewAction(
+                        selectedDescendantsMatch(withId(R.id.favoriteButton),
+                                withContentDescription(R.string.favorite)))),
 
-        // Then check to see the status change
-        onView(withId(R.id.recyclerView))
-                .perform(
-                        actionOnItemAtPosition(25, DescendantViewActions.checkViewAction(
-                                selectedDescendantsMatch(withId(R.id.favoriteButton),
-                                        withContentDescription(R.string.unfavorite))))
-                );
+                // Or perform an action on a descendant view.
+                actionOnItemAtPosition(25,
+                        DescendantViewActions.performDescendantAction(withId(R.id.favoriteButton), click())),
 
+                // Then check to see the status change
+                actionOnItemAtPosition(25, DescendantViewActions.checkViewAction(
+                        selectedDescendantsMatch(withId(R.id.favoriteButton),
+                                withContentDescription(R.string.unfavorite))))
+        );
     }
 }
