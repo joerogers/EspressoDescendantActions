@@ -1,5 +1,9 @@
 # Espresso Descendant Actions
 
+Adding support for accessing descendant views. Useful for accessing descendant views of the root view at a particular position in a RecyclerView.
+
+[ ![Download](https://api.bintray.com/packages/joerogers/maven/espresso-descendant-actions/images/download.svg) ](https://bintray.com/joerogers/maven/espresso-descendant-actions/_latestVersion)
+
 Basic Usage
 -----------
 
@@ -8,7 +12,7 @@ Checking state of a descendant view:
 ```
 onView(withId(R.id.recyclerView))
      .perform(
-          actionOnItemAtPosition(25, DescendantViewActions.checkViewAction(
+          actionOnItemAtPosition(5, DescendantViewActions.checkViewAction(
                selectedDescendantsMatch(withId(R.id.favoriteButton),
                                 withContentDescription(R.string.favorite))))
      );
@@ -20,7 +24,7 @@ Performing an action on a descendant view:
 ```
 onView(withId(R.id.recyclerView))
      .perform(
-          actionOnItemAtPosition(25,
+          actionOnItemAtPosition(5,
                DescendantViewActions.performDescendantAction(withId(R.id.favoriteButton), click()))
      );
 ```
@@ -30,7 +34,7 @@ Gradle
 
 ```
 dependencies {
-    com.forkingcode.espresso-descendant-actions:espresso-descendant-actions:{latest version above}'
+    compile 'com.forkingcode.espresso.contrib:espresso-descendant-actions:{version listed above}'
 }
 ```
 
