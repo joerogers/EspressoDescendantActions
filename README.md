@@ -34,9 +34,20 @@ Gradle
 
 ```
 dependencies {
-    compile 'com.forkingcode.espresso.contrib:espresso-descendant-actions:{version listed above}'
+    androidTestCompile 'com.forkingcode.espresso.contrib:espresso-descendant-actions:{version listed above}'
 }
 ```
+
+If you need to exclude support-annotations use this form:
+
+```
+dependencies {
+    androidTestCompile('com.forkingcode.espresso.contrib:espresso-descendant-actions:{version listed above}') {
+        exclude module: 'support-annotations'
+    }
+}
+```
+
 
 License
 -------
