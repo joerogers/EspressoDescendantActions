@@ -7,13 +7,22 @@ Adding support for accessing descendant views. Useful for accessing descendant v
 Basic Usage
 -----------
 
+Checking state of the specific adapter view at position 5:
+
+```
+onView(withId(R.id.recyclerView)).perform(
+    actionOnItemAtPosition(5,
+        DescendantViewActions.checkViewAction(matches(isCompletelyDisplayed())))
+);
+```
+
 Checking state of a descendant view:
 
 ```
 onView(withId(R.id.recyclerView)).perform(
-      actionOnItemAtPosition(5, DescendantViewActions.checkViewAction(
-            selectedDescendantsMatch(withId(R.id.favoriteButton),
-                             withContentDescription(R.string.favorite))))
+    actionOnItemAtPosition(5,
+        DescendantViewActions.checkDescendantViewAction(
+            withId(R.id.favoriteButton), matches(withContentDescription(R.string.favorite))))
 );
 ```
 
@@ -22,8 +31,8 @@ Performing an action on a descendant view:
 
 ```
 onView(withId(R.id.recyclerView)).perform(
-      actionOnItemAtPosition(5,
-            DescendantViewActions.performDescendantAction(withId(R.id.favoriteButton), click()))
+    actionOnItemAtPosition(5,
+        DescendantViewActions.performDescendantAction(withId(R.id.favoriteButton), click()))
 );
 ```
 
@@ -35,7 +44,7 @@ Gradle
 
 ```
 dependencies {
-    androidTestCompile 'com.forkingcode.espresso.contrib:espresso-descendant-actions:{version listed above}'
+    androidTestCompile 'com.forkingcode.espresso.contrib:espresso-descendant-actions:{version}'
 }
 ```
 
@@ -43,7 +52,7 @@ If you need to exclude support-annotations use this form:
 
 ```
 dependencies {
-    androidTestCompile('com.forkingcode.espresso.contrib:espresso-descendant-actions:{version listed above}') {
+    androidTestCompile('com.forkingcode.espresso.contrib:espresso-descendant-actions:{version}') {
         exclude module: 'support-annotations'
     }
 }
