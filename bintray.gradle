@@ -54,6 +54,7 @@ bintray {
 
         version {
             name = libraryVersion
+            vcsTag = "v${libraryVersion}"
             // Optional. The passphrase for GPG signing'
             // gpg {
             //    sign = true //Determines whether to GPG sign the files. The default is false
