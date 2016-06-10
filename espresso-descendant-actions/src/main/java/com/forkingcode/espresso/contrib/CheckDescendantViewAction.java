@@ -1,45 +1,32 @@
-/*
- * Copyright 2016 Joe Rogers
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.forkingcode.espresso.contrib;
 
 import android.support.test.espresso.PerformException;
 import android.support.test.espresso.UiController;
 import android.support.test.espresso.ViewAction;
+import android.support.test.espresso.ViewAssertion;
 import android.support.test.espresso.ViewFinder;
 import android.support.test.espresso.util.HumanReadables;
 import android.view.View;
 
+import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.StringDescription;
 
 import static android.support.test.internal.util.Checks.checkNotNull;
 
 /**
- * Perform one or more view actions on a descendant view. Useful when interacting with a recycler
- * view associated with cards with buttons or toggles
+ * An action that wraps a check assertion against a matching descendant view. This class exists to
+ * cover cases where the only option is to perform an action, but not a check() such as with
+ * RecyclerViewActions
  */
-public final class DescendantViewAction implements ViewAction {
+public final class CheckDescendantViewAction implements ViewAction {
 
     private final Matcher<View> viewMatcher;
-    private final ViewAction viewAction;
+    private final ViewAssertion viewAssertion;
 
-    public DescendantViewAction(Matcher<View> viewMatcher, ViewAction viewAction) {
+    public CheckDescendantViewAction(Matcher<View> viewMatcher, ViewAssertion viewAssertion) {
         this.viewMatcher = viewMatcher;
-        this.viewAction = viewAction;
+        this.viewAssertion = viewAssertion;
     }
 
     @Override
@@ -50,17 +37,13 @@ public final class DescendantViewAction implements ViewAction {
     @Override
     public String getDescription() {
         return new StringDescription()
-                .appendText("Perform action ")
-                .appendText(viewAction != null ? viewAction.getDescription() : "null")
-                .appendText(" on descendant view ")
+                .appendText("Check descendant view ")
                 .appendDescriptionOf(viewMatcher)
                 .toString();
     }
 
     @Override
     public void perform(UiController uiController, View view) {
-
-        checkNotNull(viewAction);
 
         ViewFinder viewFinder = ViewFinderHelper.buildViewFinder(viewMatcher, view);
 
@@ -70,18 +53,20 @@ public final class DescendantViewAction implements ViewAction {
             throw new PerformException.Builder()
                     .withActionDescription(getDescription())
                     .withViewDescription(HumanReadables.describe(view))
-                    .withCause(new RuntimeException("Descendant view not found"))
+                    .withCause(new IllegalStateException("Descendant view not found"))
                     .build();
         }
 
+        checkNotNull(viewAssertion);
+
         try {
-            viewAction.perform(uiController, descendantView);
+            viewAssertion.check(descendantView, null);
         }
-        catch (Throwable t) {
+        catch (Throwable e) {
             throw new PerformException.Builder()
                     .withActionDescription(getDescription())
                     .withViewDescription(HumanReadables.describe(descendantView))
-                    .withCause(t)
+                    .withCause(e)
                     .build();
         }
     }

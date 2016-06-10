@@ -25,17 +25,19 @@ import android.view.View;
 
 import org.hamcrest.Matcher;
 
+import static android.support.test.internal.util.Checks.checkNotNull;
+
 /**
  * An action that wraps a check assertion against a view. This class exists to cover
  * cases where the only option is to perform an action, but not a check() such as with
  * RecyclerViewActions
  */
-public class CheckAssertionAction implements ViewAction {
+public final class CheckAssertionAction implements ViewAction {
 
-    private final ViewAssertion assertion;
+    private final ViewAssertion viewAssertion;
 
-    public CheckAssertionAction(ViewAssertion assertion) {
-        this.assertion = assertion;
+    public CheckAssertionAction(ViewAssertion viewAssertion) {
+        this.viewAssertion = viewAssertion;
     }
 
     @Override
@@ -45,13 +47,14 @@ public class CheckAssertionAction implements ViewAction {
 
     @Override
     public String getDescription() {
-        return "Performing child view assertion";
+        return "Check assertion ";
     }
 
     @Override
     public void perform(UiController uiController, View view) {
+        checkNotNull(viewAssertion);
         try {
-            assertion.check(view, null);
+            viewAssertion.check(view, null);
         }
         catch (Throwable e) {
             throw new PerformException.Builder()
