@@ -1,5 +1,6 @@
 package com.forkingcode.espresso.contrib;
 
+import android.support.test.espresso.NoMatchingViewException;
 import android.support.test.espresso.PerformException;
 import android.support.test.espresso.UiController;
 import android.support.test.espresso.ViewAction;
@@ -44,23 +45,22 @@ public final class CheckDescendantViewAction implements ViewAction {
 
     @Override
     public void perform(UiController uiController, View view) {
+        checkNotNull(viewAssertion);
 
         ViewFinder viewFinder = ViewFinderHelper.buildViewFinder(viewMatcher, view);
 
-        View descendantView = viewFinder.getView();
-
-        if (descendantView == null) {
-            throw new PerformException.Builder()
-                    .withActionDescription(getDescription())
-                    .withViewDescription(HumanReadables.describe(view))
-                    .withCause(new IllegalStateException("Descendant view not found"))
-                    .build();
-        }
-
-        checkNotNull(viewAssertion);
+        View descendantView = null;
+        NoMatchingViewException noMatchingViewException = null;
 
         try {
-            viewAssertion.check(descendantView, null);
+            descendantView = viewFinder.getView();
+        }
+        catch (NoMatchingViewException e) {
+            noMatchingViewException = e;
+        }
+
+        try {
+            viewAssertion.check(descendantView, noMatchingViewException);
         }
         catch (Throwable e) {
             throw new PerformException.Builder()

@@ -27,6 +27,7 @@ import org.junit.Test;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.Espresso.pressBack;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.assertion.ViewAssertions.doesNotExist;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
 import static android.support.test.espresso.contrib.RecyclerViewActions.scrollToPosition;
@@ -90,7 +91,11 @@ public class MainActivityTest {
 
                 // Then check to see the status change
                 actionOnItemAtPosition(25, DescendantViewActions.checkDescendantViewAction(
-                        withId(R.id.favoriteButton), matches(withContentDescription(R.string.unfavorite))))
+                        withId(R.id.favoriteButton), matches(withContentDescription(R.string.unfavorite)))),
+
+                // and non-existence of a view
+                actionOnItemAtPosition(25, DescendantViewActions.checkDescendantViewAction(withId(R.id.favoriteStatus), doesNotExist()))
+
         );
     }
 }
