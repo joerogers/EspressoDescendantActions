@@ -4,6 +4,8 @@ Adding support for accessing descendant views. Useful for accessing descendant v
 
 [ ![Download](https://api.bintray.com/packages/joerogers/maven/espresso-descendant-actions/images/download.svg) ](https://bintray.com/joerogers/maven/espresso-descendant-actions/_latestVersion)
 
+For history on this project see my [blog post](http://blog.forkingcode.com/2016/06/espresso-and-recyclerview.html)
+
 Basic Usage
 -----------
 
