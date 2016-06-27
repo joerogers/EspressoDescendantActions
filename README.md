@@ -11,7 +11,7 @@ Basic Usage
 
 Checking state of the specific adapter view at position 5:
 
-```
+```java
 onView(withId(R.id.recyclerView)).perform(
     actionOnItemAtPosition(5,
         DescendantViewActions.checkViewAction(matches(isCompletelyDisplayed())))
@@ -20,7 +20,7 @@ onView(withId(R.id.recyclerView)).perform(
 
 Checking state of a descendant view:
 
-```
+```java
 onView(withId(R.id.recyclerView)).perform(
     actionOnItemAtPosition(5,
         DescendantViewActions.checkDescendantViewAction(
@@ -31,7 +31,7 @@ onView(withId(R.id.recyclerView)).perform(
 
 Performing an action on a descendant view:
 
-```
+```java
 onView(withId(R.id.recyclerView)).perform(
     actionOnItemAtPosition(5,
         DescendantViewActions.performDescendantAction(withId(R.id.favoriteButton), click()))
@@ -44,7 +44,7 @@ See the sample project for a functional example.
 Gradle
 ------
 
-```
+```groovy
 dependencies {
     androidTestCompile 'com.forkingcode.espresso.contrib:espresso-descendant-actions:{version}'
 }
@@ -52,7 +52,7 @@ dependencies {
 
 If you need to exclude support-annotations use this form:
 
-```
+```groovy
 dependencies {
     androidTestCompile('com.forkingcode.espresso.contrib:espresso-descendant-actions:{version}') {
         exclude module: 'support-annotations'
