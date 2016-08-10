@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion 24
+    buildToolsVersion "24.0.1"
 
     defaultConfig {
         applicationId "com.sample.espresso.contrib"
         minSdkVersion 21
-        targetSdkVersion 23
+        targetSdkVersion 24
         versionCode 1
         versionName "1.0"
 
@@ -27,7 +27,7 @@ android {
 
 // Dependency properties
 ext {
-    supportLibVersion = "23.4.0"
+    supportLibVersion = "24.1.1"
     testLibVersion = "0.5"
     espressoVersion = "2.2.2"
 }
