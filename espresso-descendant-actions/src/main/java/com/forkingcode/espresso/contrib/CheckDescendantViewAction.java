@@ -9,7 +9,6 @@ import android.support.test.espresso.ViewFinder;
 import android.support.test.espresso.util.HumanReadables;
 import android.view.View;
 
-import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.StringDescription;
 
@@ -20,12 +19,12 @@ import static android.support.test.internal.util.Checks.checkNotNull;
  * cover cases where the only option is to perform an action, but not a check() such as with
  * RecyclerViewActions
  */
-public final class CheckDescendantViewAction implements ViewAction {
+/* package */ final class CheckDescendantViewAction implements ViewAction {
 
     private final Matcher<View> viewMatcher;
     private final ViewAssertion viewAssertion;
 
-    public CheckDescendantViewAction(Matcher<View> viewMatcher, ViewAssertion viewAssertion) {
+    CheckDescendantViewAction(Matcher<View> viewMatcher, ViewAssertion viewAssertion) {
         this.viewMatcher = viewMatcher;
         this.viewAssertion = viewAssertion;
     }

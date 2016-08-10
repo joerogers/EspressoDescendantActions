@@ -32,12 +32,12 @@ import static android.support.test.internal.util.Checks.checkNotNull;
  * Perform one or more view actions on a descendant view. Useful when interacting with a recycler
  * view associated with cards with buttons or toggles
  */
-public final class DescendantViewAction implements ViewAction {
+/* package */ final class DescendantViewAction implements ViewAction {
 
     private final Matcher<View> viewMatcher;
     private final ViewAction viewAction;
 
-    public DescendantViewAction(Matcher<View> viewMatcher, ViewAction viewAction) {
+    DescendantViewAction(Matcher<View> viewMatcher, ViewAction viewAction) {
         this.viewMatcher = viewMatcher;
         this.viewAction = viewAction;
     }

@@ -13,17 +13,18 @@ import javax.inject.Provider;
  */
 /* package */ final class ViewFinderHelper {
 
-    public static ViewFinder buildViewFinder(Matcher<View> viewMatcher, View view) {
+    static ViewFinder buildViewFinder(Matcher<View> viewMatcher, View view) {
         // Some risk since using Dagger generated factory directly.
         return ViewFinderImpl_Factory.create(new DescendantViewMatcherProvider(viewMatcher), new ViewProvider(view)).get();
     }
 
     // Provider classes to satisfy the Dagger generated factory method
+    @SuppressWarnings("WeakerAccess")
     static class ViewProvider implements Provider<View> {
 
         private final View view;
 
-        public ViewProvider(View view) {
+        ViewProvider(View view) {
             this.view = view;
         }
 
@@ -33,10 +34,11 @@ import javax.inject.Provider;
         }
     }
 
+    @SuppressWarnings("WeakerAccess")
     static class DescendantViewMatcherProvider implements Provider<Matcher<View>> {
         private final Matcher<View> viewMatcher;
 
-        public DescendantViewMatcherProvider(Matcher<View> viewMatcher) {
+        DescendantViewMatcherProvider(Matcher<View> viewMatcher) {
             this.viewMatcher = viewMatcher;
         }
 
