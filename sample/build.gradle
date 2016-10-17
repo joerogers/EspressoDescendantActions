@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 24
-    buildToolsVersion "24.0.1"
+    buildToolsVersion "24.0.3"
 
     defaultConfig {
         applicationId "com.sample.espresso.contrib"
@@ -27,7 +27,7 @@ android {
 
 // Dependency properties
 ext {
-    supportLibVersion = "24.1.1"
+    supportLibVersion = "24.2.1"
     testLibVersion = "0.5"
     espressoVersion = "2.2.2"
 }
@@ -63,7 +63,7 @@ dependencies {
     }
 
     //androidTestCompile(project(":espresso-descendant-actions")) {
-    androidTestCompile('com.forkingcode.espresso.contrib:espresso-descendant-actions:1.1.0') {
+    androidTestCompile('com.forkingcode.espresso.contrib:espresso-descendant-actions:1.1.1') {
         exclude module: 'support-annotations'
     }
 }
