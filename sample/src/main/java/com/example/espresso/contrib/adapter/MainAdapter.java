@@ -63,9 +63,9 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.BindingHolder>
     }
 
 
-    public static class BindingHolder extends RecyclerView.ViewHolder {
+    /* package */ static class BindingHolder extends RecyclerView.ViewHolder {
 
-        public BindingHolder(@NonNull AdapterItemBinding binding) {
+        BindingHolder(@NonNull AdapterItemBinding binding) {
             super(binding.getRoot());
         }
     }

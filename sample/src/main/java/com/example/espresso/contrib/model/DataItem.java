@@ -42,6 +42,7 @@ public class DataItem extends BaseObservable implements Parcelable {
         return title;
     }
 
+    @SuppressWarnings("unused")
     public void setTitle(String title) {
         this.title = title;
         notifyPropertyChanged(BR.title);
@@ -61,6 +62,7 @@ public class DataItem extends BaseObservable implements Parcelable {
         setFavorite(!favorite);
     }
 
+    @SuppressWarnings("WeakerAccess")
     protected DataItem(Parcel in) {
         title = in.readString();
         favorite = in.readInt() != 0;

@@ -1,12 +1,12 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion "24.0.3"
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 24
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
     }
@@ -19,7 +19,7 @@ android {
 }
 
 ext {
-    espressoVersion = "2.2.2"
+    espressoVersion = "3.0.0"
     libraryName = 'espresso-descendant-actions'
     libraryDescription = 'Custom espresso actions for working with descendant views'
     libraryVersion = rootProject.libraryVersion
