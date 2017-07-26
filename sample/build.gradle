@@ -63,7 +63,7 @@ dependencies {
     }
 
     //androidTestCompile(project(":espresso-descendant-actions")) {
-    androidTestCompile('com.forkingcode.espresso.contrib:espresso-descendant-actions:1.1.1') {
+    androidTestCompile('com.forkingcode.espresso.contrib:espresso-descendant-actions:1.2.0') {
         exclude module: 'support-annotations'
     }
 }
