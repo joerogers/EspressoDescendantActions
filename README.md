@@ -4,7 +4,9 @@ Adding support for accessing descendant views. Useful for accessing descendant v
 
 [ ![Download](https://api.bintray.com/packages/joerogers/maven/espresso-descendant-actions/images/download.svg) ](https://bintray.com/joerogers/maven/espresso-descendant-actions/_latestVersion)
 
-If your app is using espresso 2.2.2 and test runner 0.5 it is recommended you use [ ![Download](https://api.bintray.com/packages/joerogers/maven/espresso-descendant-actions/images/download.svg?version=1.1.1) ](https://bintray.com/joerogers/maven/espresso-descendant-actions/1.1.1/link) if the latest release causes problems.
+If your app is using espresso 3.0.0 or 3.0.1 it is recommended you use [ ![Download](https://api.bintray.com/packages/joerogers/maven/espresso-descendant-actions/images/download.svg?version=1.2.0) ](https://bintray.com/joerogers/maven/espresso-descendant-actions/1.2.0/link) if the latest release causes problems.
+
+If your app is using espresso 2.2.2 it is recommended you use [ ![Download](https://api.bintray.com/packages/joerogers/maven/espresso-descendant-actions/images/download.svg?version=1.1.1) ](https://bintray.com/joerogers/maven/espresso-descendant-actions/1.1.1/link) if the latest release causes problems.
 
 For history on this project see my [blog post](http://blog.forkingcode.com/2016/06/espresso-and-recyclerview.html)
 
