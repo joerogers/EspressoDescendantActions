@@ -44,7 +44,7 @@ public class MainActivityTest {
     public ActivityTestRule<MainActivity> activityRule = new ActivityTestRule<>(MainActivity.class, true, true);
 
     @Test
-    public void testRecyclerAction() throws Exception {
+    public void testRecyclerActionFavorite() throws Exception {
         // By default you could only test direct actions on a recycler view. For example
         // you could "click" the view, navigate to another activity and verify conditions.
 
@@ -55,12 +55,57 @@ public class MainActivityTest {
                 // manager perform the scroll operation
                 scrollToPosition(15),
 
+                actionOnItemAtPosition(15, DescendantViewActions.checkDescendantViewAction(
+                        withId(R.id.title), matches(withText("Item 16")))),
+
                 // Click the item to trigger navigation to detail view
                 actionOnItemAtPosition(15, click())
         );
 
         // Check detail view
         onView(withId(R.id.favoriteStatus)).check(matches(withText(R.string.unfavorite)));
+
+        // return to main activity
+        pressBack();
+    }
+
+    @Test
+    public void testRecyclerActionUnFavorite() throws Exception {
+        // By default you could only test direct actions on a recycler view. For example
+        // you could "click" the view, navigate to another activity and verify conditions.
+
+        // Chaining several RecyclerViewActions together.
+        onView(withId(R.id.recyclerView)).perform(
+
+                // First position the recycler view. Necessary to allow the layout
+                // manager perform the scroll operation
+                scrollToPosition(10),
+
+                // Using the check view action, you can now test conditions of the view at position 25
+                actionOnItemAtPosition(10, DescendantViewActions.checkViewAction(matches(isCompletelyDisplayed()))),
+
+                // With the descendant actions provided, you can check the status of a descendant view using
+                // a standard check. Just provide way to find the descendant view and how you want to validate
+                // the view.
+                actionOnItemAtPosition(10, DescendantViewActions.checkDescendantViewAction(
+                        withId(R.id.favoriteButton), matches(withContentDescription(R.string.favorite)))),
+
+                // Or perform an action on a descendant view.
+                actionOnItemAtPosition(10,
+                        DescendantViewActions.performDescendantAction(withId(R.id.favoriteButton), click())),
+
+                // With the descendant actions provided, you can check the status of a descendant view using
+                // a standard check. Just provide way to find the descendant view and how you want to validate
+                // the view.
+                actionOnItemAtPosition(10, DescendantViewActions.checkDescendantViewAction(
+                        withId(R.id.favoriteButton), matches(withContentDescription(R.string.unfavorite)))),
+
+                // Click the item to trigger navigation to detail view
+                actionOnItemAtPosition(10, click())
+        );
+
+        // Check detail view
+        onView(withId(R.id.favoriteStatus)).check(matches(withText(R.string.favorite)));
 
         // return to main activity
         pressBack();
