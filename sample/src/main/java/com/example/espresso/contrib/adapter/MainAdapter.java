@@ -72,18 +72,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.BindingHolder>
 
     public static class ClickListener {
 
-        public void onItemClick(View v) {
-            AdapterItemBinding binding = DataBindingUtil.findBinding(v);
-            if (binding != null) {
-                DetailActivity.startActivity(v.getContext(), binding.getDataItem());
-            }
-        }
-
-        public void onFavoriteClick(View v) {
-            AdapterItemBinding binding = DataBindingUtil.findBinding(v);
-            if (binding != null) {
-                binding.getDataItem().toggleFavorite();
-            }
+        public void onItemClick(View view, DataItem dataItem) {
+            DetailActivity.startActivity(view.getContext(), dataItem);
         }
     }
 }

@@ -33,7 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="?android:selectableItemBackground"
-        android:onClick="@{listener::onItemClick}"
+        android:onClick="@{(view) -> listener.onItemClick(view, dataItem)}"
         android:orientation="horizontal">
 
         <ImageView
@@ -64,7 +64,7 @@
             android:layout_width="48dp"
             android:layout_height="match_parent"
             android:contentDescription="@{dataItem.favorite ? @string/unfavorite : @string/favorite}"
-            android:onClick="@{listener::onFavoriteClick}"
+            android:onClick="@{(view) -> dataItem.toggleFavorite()}"
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
             android:scaleType="centerInside"
