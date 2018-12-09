@@ -16,9 +16,9 @@
 
 package com.forkingcode.espresso.contrib;
 
-import android.support.test.espresso.ViewAction;
-import android.support.test.espresso.ViewAssertion;
-import android.support.test.espresso.action.ViewActions;
+import androidx.test.espresso.ViewAction;
+import androidx.test.espresso.ViewAssertion;
+import androidx.test.espresso.action.ViewActions;
 import android.view.View;
 
 import org.hamcrest.Matcher;

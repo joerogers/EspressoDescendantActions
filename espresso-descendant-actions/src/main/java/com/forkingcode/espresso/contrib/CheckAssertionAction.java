@@ -16,16 +16,15 @@
 
 package com.forkingcode.espresso.contrib;
 
-import android.support.test.espresso.PerformException;
-import android.support.test.espresso.UiController;
-import android.support.test.espresso.ViewAction;
-import android.support.test.espresso.ViewAssertion;
-import android.support.test.espresso.util.HumanReadables;
 import android.view.View;
 
 import org.hamcrest.Matcher;
 
-import static android.support.test.internal.util.Checks.checkNotNull;
+import androidx.test.espresso.PerformException;
+import androidx.test.espresso.UiController;
+import androidx.test.espresso.ViewAction;
+import androidx.test.espresso.ViewAssertion;
+import androidx.test.espresso.util.HumanReadables;
 
 /**
  * An action that wraps a check assertion against a view. This class exists to cover
@@ -52,7 +51,10 @@ public final class CheckAssertionAction implements ViewAction {
 
     @Override
     public void perform(UiController uiController, View view) {
-        checkNotNull(viewAssertion);
+        if (viewAssertion == null) {
+            throw new NullPointerException("View assertion is null");
+        }
+
         try {
             viewAssertion.check(view, null);
         }

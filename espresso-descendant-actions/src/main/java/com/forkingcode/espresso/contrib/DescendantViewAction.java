@@ -16,17 +16,16 @@
 
 package com.forkingcode.espresso.contrib;
 
-import android.support.test.espresso.PerformException;
-import android.support.test.espresso.UiController;
-import android.support.test.espresso.ViewAction;
-import android.support.test.espresso.ViewFinder;
-import android.support.test.espresso.util.HumanReadables;
 import android.view.View;
 
 import org.hamcrest.Matcher;
 import org.hamcrest.StringDescription;
 
-import static android.support.test.internal.util.Checks.checkNotNull;
+import androidx.test.espresso.PerformException;
+import androidx.test.espresso.UiController;
+import androidx.test.espresso.ViewAction;
+import androidx.test.espresso.ViewFinder;
+import androidx.test.espresso.util.HumanReadables;
 
 /**
  * Perform one or more view actions on a descendant view. Useful when interacting with a recycler
@@ -60,7 +59,9 @@ import static android.support.test.internal.util.Checks.checkNotNull;
     @Override
     public void perform(UiController uiController, View view) {
 
-        checkNotNull(viewAction);
+        if (viewAction == null) {
+            throw new NullPointerException("View action is null");
+        }
 
         ViewFinder viewFinder = ViewFinderHelper.buildViewFinder(viewMatcher, view);
 

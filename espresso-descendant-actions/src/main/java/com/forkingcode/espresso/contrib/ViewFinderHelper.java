@@ -1,7 +1,7 @@
 package com.forkingcode.espresso.contrib;
 
-import android.support.test.espresso.ViewFinder;
-import android.support.test.espresso.base.ViewFinderImpl_Factory;
+import androidx.test.espresso.ViewFinder;
+import androidx.test.espresso.base.ViewFinderImpl_Factory;
 import android.view.View;
 
 import org.hamcrest.Matcher;

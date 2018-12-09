@@ -1,18 +1,17 @@
 package com.forkingcode.espresso.contrib;
 
-import android.support.test.espresso.NoMatchingViewException;
-import android.support.test.espresso.PerformException;
-import android.support.test.espresso.UiController;
-import android.support.test.espresso.ViewAction;
-import android.support.test.espresso.ViewAssertion;
-import android.support.test.espresso.ViewFinder;
-import android.support.test.espresso.util.HumanReadables;
 import android.view.View;
 
 import org.hamcrest.Matcher;
 import org.hamcrest.StringDescription;
 
-import static android.support.test.internal.util.Checks.checkNotNull;
+import androidx.test.espresso.NoMatchingViewException;
+import androidx.test.espresso.PerformException;
+import androidx.test.espresso.UiController;
+import androidx.test.espresso.ViewAction;
+import androidx.test.espresso.ViewAssertion;
+import androidx.test.espresso.ViewFinder;
+import androidx.test.espresso.util.HumanReadables;
 
 /**
  * An action that wraps a check assertion against a matching descendant view. This class exists to
@@ -44,7 +43,9 @@ import static android.support.test.internal.util.Checks.checkNotNull;
 
     @Override
     public void perform(UiController uiController, View view) {
-        checkNotNull(viewAssertion);
+        if (viewAssertion == null) {
+            throw new NullPointerException("View assertion is null");
+        }
 
         ViewFinder viewFinder = ViewFinderHelper.buildViewFinder(viewMatcher, view);
 
