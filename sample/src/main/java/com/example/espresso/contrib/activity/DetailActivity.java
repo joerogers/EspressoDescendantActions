@@ -18,9 +18,12 @@ package com.example.espresso.contrib.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.databinding.DataBindingUtil;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.espresso.contrib.R;
 import com.example.espresso.contrib.databinding.ActivityDetailBinding;
@@ -30,14 +33,14 @@ public class DetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_DATA = "dataItem";
 
-    public static void startActivity(Context context, DataItem dataItem) {
+    public static void startActivity(@NonNull Context context, @NonNull DataItem dataItem) {
         Intent intent = new Intent(context, DetailActivity.class);
         intent.putExtra(EXTRA_DATA, dataItem);
         context.startActivity(intent);
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityDetailBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_detail);
 

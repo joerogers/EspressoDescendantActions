@@ -16,9 +16,9 @@
 
 package com.example.espresso.contrib.adapter;
 
-import android.databinding.DataBindingUtil;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.databinding.DataBindingUtil;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,15 +47,16 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.BindingHolder>
         return dataItems.length;
     }
 
+    @NonNull
     @Override
-    public BindingHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public BindingHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         AdapterItemBinding binding = AdapterItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
         binding.setListener(clickListener);
         return new BindingHolder(binding);
     }
 
     @Override
-    public void onBindViewHolder(BindingHolder holder, int position) {
+    public void onBindViewHolder(@NonNull BindingHolder holder, int position) {
         AdapterItemBinding binding = DataBindingUtil.getBinding(holder.itemView);
         if (binding != null) {
             binding.setDataItem(dataItems[position]);
@@ -72,7 +73,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.BindingHolder>
 
     public static class ClickListener {
 
-        public void onItemClick(View view, DataItem dataItem) {
+        public void onItemClick(@NonNull View view, @NonNull DataItem dataItem) {
             DetailActivity.startActivity(view.getContext(), dataItem);
         }
     }

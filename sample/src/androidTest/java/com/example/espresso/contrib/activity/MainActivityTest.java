@@ -16,7 +16,7 @@
 
 package com.example.espresso.contrib.activity;
 
-import android.support.test.rule.ActivityTestRule;
+import androidx.test.rule.ActivityTestRule;
 
 import com.example.espresso.contrib.R;
 import com.forkingcode.espresso.contrib.DescendantViewActions;
@@ -24,17 +24,17 @@ import com.forkingcode.espresso.contrib.DescendantViewActions;
 import org.junit.Rule;
 import org.junit.Test;
 
-import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.Espresso.pressBack;
-import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.assertion.ViewAssertions.doesNotExist;
-import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
-import static android.support.test.espresso.contrib.RecyclerViewActions.scrollToPosition;
-import static android.support.test.espresso.matcher.ViewMatchers.isCompletelyDisplayed;
-import static android.support.test.espresso.matcher.ViewMatchers.withContentDescription;
-import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.Espresso.pressBack;
+import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.assertion.ViewAssertions.doesNotExist;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
+import static androidx.test.espresso.contrib.RecyclerViewActions.scrollToPosition;
+import static androidx.test.espresso.matcher.ViewMatchers.isCompletelyDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 /**
  * Sample test case
@@ -44,7 +44,7 @@ public class MainActivityTest {
     public ActivityTestRule<MainActivity> activityRule = new ActivityTestRule<>(MainActivity.class, true, true);
 
     @Test
-    public void testRecyclerActionFavorite() throws Exception {
+    public void testRecyclerActionFavorite() {
         // By default you could only test direct actions on a recycler view. For example
         // you could "click" the view, navigate to another activity and verify conditions.
 
@@ -70,7 +70,7 @@ public class MainActivityTest {
     }
 
     @Test
-    public void testRecyclerActionUnFavorite() throws Exception {
+    public void testRecyclerActionUnFavorite() {
         // By default you could only test direct actions on a recycler view. For example
         // you could "click" the view, navigate to another activity and verify conditions.
 
@@ -112,7 +112,7 @@ public class MainActivityTest {
     }
 
     @Test
-    public void testFavoriteToggle() throws Exception {
+    public void testFavoriteToggle() {
         // More advanced test case testing toggling the favorite status on a particular row
 
         // Chaining several actions together on the recycler view

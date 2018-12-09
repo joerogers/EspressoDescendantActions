@@ -16,13 +16,16 @@
 
 package com.example.espresso.contrib.model;
 
-import android.databinding.BaseObservable;
-import android.databinding.Bindable;
+import androidx.annotation.Nullable;
+import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.NonNull;
 
 import com.example.espresso.contrib.BR;
+
+import androidx.annotation.NonNull;
+
 
 /**
  * Simple model item
@@ -32,18 +35,19 @@ public class DataItem extends BaseObservable implements Parcelable {
     private String title;
     private boolean favorite;
 
-    public DataItem(String title) {
+    public DataItem(@Nullable String title) {
         this.title = title;
         this.favorite = false;
     }
 
     @Bindable
+    @Nullable
     public String getTitle() {
         return title;
     }
 
     @SuppressWarnings("unused")
-    public void setTitle(String title) {
+    public void setTitle(@Nullable String title) {
         this.title = title;
         notifyPropertyChanged(BR.title);
     }
@@ -63,7 +67,7 @@ public class DataItem extends BaseObservable implements Parcelable {
     }
 
     @SuppressWarnings("WeakerAccess")
-    protected DataItem(Parcel in) {
+    protected DataItem(@NonNull Parcel in) {
         title = in.readString();
         favorite = in.readInt() != 0;
     }
