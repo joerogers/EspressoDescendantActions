@@ -2,11 +2,14 @@
 
 Adding support for accessing descendant views. Useful for accessing descendant views of the root view at a particular position in a RecyclerView.
 
-[ ![Download](https://api.bintray.com/packages/joerogers/maven/espresso-descendant-actions/images/download.svg) ](https://bintray.com/joerogers/maven/espresso-descendant-actions/_latestVersion)
+Download the version of the library that matches the espresso version you are using:
 
-If your app is using espresso 3.0.0 or 3.0.1 it is recommended you use [ ![Download](https://api.bintray.com/packages/joerogers/maven/espresso-descendant-actions/images/download.svg?version=1.2.0) ](https://bintray.com/joerogers/maven/espresso-descendant-actions/1.2.0/link) if the latest release causes problems.
-
-If your app is using espresso 2.2.2 it is recommended you use [ ![Download](https://api.bintray.com/packages/joerogers/maven/espresso-descendant-actions/images/download.svg?version=1.1.1) ](https://bintray.com/joerogers/maven/espresso-descendant-actions/1.1.1/link) if the latest release causes problems.
+| Espresso version | EspressoDescendantAction Library |
+|---|---|
+| 3.1.0 (androidx) | [ ![Download](https://api.bintray.com/packages/joerogers/maven/espresso-descendant-actions/images/download.svg) ](https://bintray.com/joerogers/maven/espresso-descendant-actions/_latestVersion) |
+| 3.0.2 | [ ![Download](https://api.bintray.com/packages/joerogers/maven/espresso-descendant-actions/images/download.svg?version=1.3.0) ](https://bintray.com/joerogers/maven/espresso-descendant-actions/1.3.0/link) |
+| 3.0.1, 3.0.0 | [ ![Download](https://api.bintray.com/packages/joerogers/maven/espresso-descendant-actions/images/download.svg?version=1.2.0) ](https://bintray.com/joerogers/maven/espresso-descendant-actions/1.2.0/link) |
+| 2.2.2 | [ ![Download](https://api.bintray.com/packages/joerogers/maven/espresso-descendant-actions/images/download.svg?version=1.1.1) ](https://bintray.com/joerogers/maven/espresso-descendant-actions/1.1.1/link) |
 
 For history on this project see my [blog post](http://blog.forkingcode.com/2016/06/espresso-and-recyclerview.html)
 
