@@ -35,34 +35,17 @@ ext {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    testImplementation 'junit:junit:4.12'
     implementation "com.android.support:appcompat-v7:${supportLibVersion}"
     implementation "com.android.support:recyclerview-v7:${supportLibVersion}"
     implementation "com.android.support:cardview-v7:${supportLibVersion}"
 
     // tests
-    androidTestImplementation("com.android.support.test:runner:${testLibVersion}") {
-        exclude module: 'support-annotations'
-    }
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation "com.android.support.test:runner:${testLibVersion}"
+    androidTestImplementation "com.android.support.test:rules:${testLibVersion}"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:${espressoVersion}"
+    androidTestImplementation "com.android.support.test.espresso:espresso-contrib:${espressoVersion}"
 
-    androidTestImplementation("com.android.support.test:rules:${testLibVersion}") {
-        exclude module: 'support-annotations'
-    }
-
-    androidTestImplementation("com.android.support.test.espresso:espresso-core:${espressoVersion}") {
-        exclude module: 'support-annotations'
-    }
-
-    androidTestImplementation("com.android.support.test.espresso:espresso-contrib:${espressoVersion}") {
-        exclude module: 'support-annotations'
-        exclude module: 'support-v4'
-        exclude module: 'support-v13'
-        exclude module: 'recyclerview-v7'
-        exclude module: 'design'
-    }
-
-    //androidTestImplementation(project(":espresso-descendant-actions")) {
-    androidTestImplementation('com.forkingcode.espresso.contrib:espresso-descendant-actions:1.3.0') {
-        exclude module: 'support-annotations'
-    }
+    //androidTestImplementation project(":espresso-descendant-actions")
+    androidTestImplementation 'com.forkingcode.espresso.contrib:espresso-descendant-actions:1.3.0'
 }
