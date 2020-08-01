@@ -1,12 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
+    buildToolsVersion "30.0.1"
 
     defaultConfig {
         applicationId "com.sample.espresso.contrib"
         minSdkVersion 21
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
@@ -19,27 +20,23 @@ android {
         }
     }
 
-    dataBinding {
-        enabled = true
+    buildFeatures {
+        dataBinding = true
     }
 }
-
-// Dependency properties
-ext {
-    testLibVersion = '1.2.0'
-    espressoVersion = '3.2.0'
-}
-
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     // tests
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13'
+
+    def testLibVersion = '1.2.0'
     androidTestImplementation "androidx.test:runner:${testLibVersion}"
     androidTestImplementation "androidx.test:rules:${testLibVersion}"
+    def espressoVersion = '3.2.0'
     androidTestImplementation "androidx.test.espresso:espresso-core:${espressoVersion}"
     androidTestImplementation "androidx.test.espresso:espresso-contrib:${espressoVersion}"
     //androidTestImplementation project(":espresso-descendant-actions")
