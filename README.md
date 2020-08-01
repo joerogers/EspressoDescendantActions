@@ -6,7 +6,7 @@ Download the version of the library that matches the espresso version you are us
 
 | Espresso version | EspressoDescendantAction Library |
 |---|---|
-| 3.1.0, 3.1.1 (androidx) | [ ![Download](https://api.bintray.com/packages/joerogers/maven/espresso-descendant-actions/images/download.svg) ](https://bintray.com/joerogers/maven/espresso-descendant-actions/_latestVersion) |
+| 3.1.0, 3.1.1, 3.2.0 (androidx) | [ ![Download](https://api.bintray.com/packages/joerogers/maven/espresso-descendant-actions/images/download.svg) ](https://bintray.com/joerogers/maven/espresso-descendant-actions/_latestVersion) |
 | 3.0.2 | [ ![Download](https://api.bintray.com/packages/joerogers/maven/espresso-descendant-actions/images/download.svg?version=1.3.0) ](https://bintray.com/joerogers/maven/espresso-descendant-actions/1.3.0/link) |
 | 3.0.1, 3.0.0 | [ ![Download](https://api.bintray.com/packages/joerogers/maven/espresso-descendant-actions/images/download.svg?version=1.2.0) ](https://bintray.com/joerogers/maven/espresso-descendant-actions/1.2.0/link) |
 | 2.2.2 | [ ![Download](https://api.bintray.com/packages/joerogers/maven/espresso-descendant-actions/images/download.svg?version=1.1.1) ](https://bintray.com/joerogers/maven/espresso-descendant-actions/1.1.1/link) |
