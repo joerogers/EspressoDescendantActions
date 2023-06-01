@@ -16,13 +16,6 @@
 
 package com.example.espresso.contrib.activity;
 
-import androidx.test.rule.ActivityTestRule;
-
-import com.example.espresso.contrib.R;
-import com.forkingcode.espresso.contrib.DescendantViewActions;
-
-import org.junit.Rule;
-import org.junit.Test;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.Espresso.pressBack;
@@ -36,12 +29,20 @@ import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
+import androidx.test.ext.junit.rules.ActivityScenarioRule;
+
+import com.example.espresso.contrib.R;
+import com.forkingcode.espresso.contrib.DescendantViewActions;
+
+import org.junit.Rule;
+import org.junit.Test;
+
 /**
  * Sample test case
  */
 public class MainActivityTest {
     @Rule
-    public ActivityTestRule<MainActivity> activityRule = new ActivityTestRule<>(MainActivity.class, true, true);
+    public ActivityScenarioRule<MainActivity> activityRule = new ActivityScenarioRule<>(MainActivity.class);
 
     @Test
     public void testRecyclerActionFavorite() {
