@@ -32,8 +32,8 @@ install {
                     }
                 }
                 scm {
-                    connection 'https://github.com/joerogers/EspressoDescendantActions.git'
-                    developerConnection 'https://github.com/joerogers/EspressoDescendantActions.git'
+                    connection 'scm:git:git://github.com/joerogers/EspressoDescendantActions.git'
+                    developerConnection 'scm:git:git://github.com/joerogers/EspressoDescendantActions.git'
                     url 'https://github.com/joerogers/EspressoDescendantActions'
                 }
             }
