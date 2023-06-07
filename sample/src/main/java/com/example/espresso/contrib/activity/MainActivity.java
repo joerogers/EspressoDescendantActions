@@ -16,16 +16,17 @@
 
 package com.example.espresso.contrib.activity;
 
-import androidx.annotation.Nullable;
-import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
+
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.espresso.contrib.R;
 import com.example.espresso.contrib.adapter.MainAdapter;
-import com.example.espresso.contrib.databinding.ActivityMainBinding;
+import com.forkingcode.espresso.contrib.sample.R;
+import com.forkingcode.espresso.contrib.sample.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 

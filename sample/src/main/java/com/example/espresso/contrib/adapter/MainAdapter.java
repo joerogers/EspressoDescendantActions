@@ -16,16 +16,17 @@
 
 package com.example.espresso.contrib.adapter;
 
-import androidx.databinding.DataBindingUtil;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.espresso.contrib.activity.DetailActivity;
-import com.example.espresso.contrib.databinding.AdapterItemBinding;
 import com.example.espresso.contrib.model.DataItem;
+import com.forkingcode.espresso.contrib.sample.databinding.AdapterItemBinding;
 
 /**
  * Simple adapter
@@ -64,7 +65,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.BindingHolder>
     }
 
 
-    /* package */ static class BindingHolder extends RecyclerView.ViewHolder {
+    static class BindingHolder extends RecyclerView.ViewHolder {
 
         BindingHolder(@NonNull AdapterItemBinding binding) {
             super(binding.getRoot());

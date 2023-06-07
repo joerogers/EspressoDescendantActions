@@ -22,9 +22,10 @@ import androidx.databinding.Bindable;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.example.espresso.contrib.BR;
 
 import androidx.annotation.NonNull;
+
+import com.forkingcode.espresso.contrib.sample.BR;
 
 
 /**

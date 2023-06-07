@@ -25,9 +25,9 @@ import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.espresso.contrib.R;
-import com.example.espresso.contrib.databinding.ActivityDetailBinding;
 import com.example.espresso.contrib.model.DataItem;
+import com.forkingcode.espresso.contrib.sample.R;
+import com.forkingcode.espresso.contrib.sample.databinding.ActivityDetailBinding;
 
 public class DetailActivity extends AppCompatActivity {
 
