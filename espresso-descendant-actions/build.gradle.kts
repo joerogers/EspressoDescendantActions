@@ -1,30 +1,29 @@
-apply plugin: 'com.android.library'
+plugins {
+    id("com.android.library")
+    id("maven-publish")
+    id("signing")
+}
 
 android {
-    namespace 'com.forkingcode.espresso.contrib'
-    compileSdkVersion 33
-    buildToolsVersion("33.0.2")
+    namespace = "com.forkingcode.espresso.contrib"
+    compileSdk = 30
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 33
+        minSdk =  16
     }
     buildTypes {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            isMinifyEnabled = false
+            proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
     }
 }
 
-ext {
-    libraryName = 'espresso-descendant-actions'
-    libraryDescription = 'Custom espresso actions for working with descendant views'
-    libraryVersion = rootProject.libraryVersion
-}
+val libraryName = "espresso-descendant-actions"
+val libraryDescription = "Custom espresso actions for working with descendant views"
+val libraryVersion = "1.5.0"
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
     // TODO may need junit as well when moving to 3.4+
-    api "androidx.test.espresso:espresso-core:3.1.0"
+    api("androidx.test.espresso:espresso-core:3.1.0")
 }
