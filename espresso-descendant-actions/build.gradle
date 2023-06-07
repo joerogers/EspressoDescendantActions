@@ -21,7 +21,6 @@ ext {
     libraryName = 'espresso-descendant-actions'
     libraryDescription = 'Custom espresso actions for working with descendant views'
     libraryVersion = rootProject.libraryVersion
-    bintrayDryRun = isDryRun()
 }
 
 dependencies {
@@ -29,5 +28,3 @@ dependencies {
     // TODO may need junit as well when moving to 3.4+
     api "androidx.test.espresso:espresso-core:3.1.0"
 }
-
-//apply from: '../bintray.gradle'
