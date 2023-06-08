@@ -53,5 +53,5 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-contrib:${espressoVersion}")
 
     //androidTestImplementation(project(":espresso-descendant-actions"))
-    androidTestImplementation("com.forkingcode.espresso.contrib:espresso-descendant-actions:1.4.0")
+    androidTestImplementation("com.forkingcode.espresso.contrib:espresso-descendant-actions:1.5.0")
 }
