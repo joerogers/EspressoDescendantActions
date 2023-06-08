@@ -1,6 +1,7 @@
 # Espresso Descendant Actions
 
-Adding support for accessing descendant views. Useful for accessing descendant views of the root view at a particular position in a RecyclerView.
+Adding support for accessing descendant child views such as a button contained within the root view
+of a row/column element in the recycler view for testing with espresso. 
 
 | Latest version                                                                                                                                                                                                                             |
 |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
