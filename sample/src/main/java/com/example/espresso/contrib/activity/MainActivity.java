@@ -24,9 +24,9 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.espresso.contrib.R;
 import com.example.espresso.contrib.adapter.MainAdapter;
-import com.forkingcode.espresso.contrib.sample.R;
-import com.forkingcode.espresso.contrib.sample.databinding.ActivityMainBinding;
+import com.example.espresso.contrib.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 

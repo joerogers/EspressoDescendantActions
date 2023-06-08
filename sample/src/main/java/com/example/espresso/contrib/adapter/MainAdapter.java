@@ -25,8 +25,8 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.espresso.contrib.activity.DetailActivity;
+import com.example.espresso.contrib.databinding.AdapterItemBinding;
 import com.example.espresso.contrib.model.DataItem;
-import com.forkingcode.espresso.contrib.sample.databinding.AdapterItemBinding;
 
 /**
  * Simple adapter

@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.forkingcode.espresso.contrib.sample"
+    namespace = "com.example.espresso.contrib"
     compileSdk = 33
 
     defaultConfig {
@@ -39,10 +39,10 @@ dependencies {
     androidTestImplementation("androidx.test:rules:1.5.0")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
 
-    val espressoVersion = "3.5.1"
+    val espressoVersion = "3.4.0"
     androidTestImplementation("androidx.test.espresso:espresso-core:${espressoVersion}")
     androidTestImplementation("androidx.test.espresso:espresso-contrib:${espressoVersion}")
 
-    androidTestImplementation(project(":espresso-descendant-actions"))
-    //androidTestImplementation("com.forkingcode.espresso.contrib:espresso-descendant-actions:1.4.0")
+    //androidTestImplementation(project(":espresso-descendant-actions"))
+    androidTestImplementation("com.forkingcode.espresso.contrib:espresso-descendant-actions:1.4.0")
 }

@@ -25,7 +25,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import com.forkingcode.espresso.contrib.sample.BR;
+import com.example.espresso.contrib.BR;
 
 
 /**
