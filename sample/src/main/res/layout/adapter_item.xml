@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright 2016 Joe Rogers
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,24 +15,28 @@
   -->
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <variable
             name="dataItem"
-            type="com.example.espresso.contrib.model.DataItem"/>
+            type="com.example.espresso.contrib.model.DataItem" />
 
         <variable
-            name="listener"
-            type="com.example.espresso.contrib.adapter.MainAdapter.ClickListener"/>
+            name="itemClicklistener"
+            type="com.example.espresso.contrib.adapter.MainAdapter.ItemClickListener" />
+
+        <variable
+            name="favoriteClickListener"
+            type="com.example.espresso.contrib.adapter.MainAdapter.FavoriteClickListener" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="?android:selectableItemBackground"
-        android:onClick="@{(view) -> listener.onItemClick(view, dataItem)}"
+        android:onClick="@{(view) -> itemClicklistener.onClick(view, dataItem)}"
         android:orientation="horizontal">
 
         <ImageView
@@ -41,12 +44,12 @@
             android:layout_width="72dp"
             android:layout_height="match_parent"
             android:contentDescription="@null"
-            android:paddingBottom="8dp"
             android:paddingLeft="16dp"
-            android:paddingRight="16dp"
             android:paddingTop="8dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="8dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/ic_account_circle_black_24dp"/>
+            android:src="@drawable/ic_account_circle_black_24dp" />
 
         <TextView
             android:id="@+id/title"
@@ -56,7 +59,7 @@
             android:layout_weight="1"
             android:text="@{dataItem.title}"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-            tools:text="Title"/>
+            tools:text="Title" />
 
         <ImageButton
             android:id="@+id/favoriteButton"
@@ -64,11 +67,11 @@
             android:layout_width="48dp"
             android:layout_height="match_parent"
             android:contentDescription="@{dataItem.favorite ? @string/unfavorite : @string/favorite}"
-            android:onClick="@{(view) -> dataItem.toggleFavorite()}"
+            android:onClick="@{(view) -> favoriteClickListener.onClick(dataItem)}"
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
             android:scaleType="centerInside"
             android:src="@{dataItem.favorite ? @drawable/ic_star_black_24dp : @drawable/ic_star_border_black_24dp}"
-            tools:src="@drawable/ic_star_border_black_24dp"/>
+            tools:src="@drawable/ic_star_border_black_24dp" />
     </LinearLayout>
 </layout>
