@@ -24,6 +24,5 @@ val libraryDescription = "Custom espresso actions for working with descendant vi
 val libraryVersion = "1.5.0"
 
 dependencies {
-    // TODO may need junit as well when moving to 3.4+
-    api("androidx.test.espresso:espresso-core:3.1.0")
+    api("androidx.test.espresso:espresso-core:3.5.0")
 }
