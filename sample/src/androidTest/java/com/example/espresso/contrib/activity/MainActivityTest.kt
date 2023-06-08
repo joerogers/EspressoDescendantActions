@@ -13,135 +13,190 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package com.example.espresso.contrib.activity
 
-package com.example.espresso.contrib.activity;
-
-
-import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.Espresso.pressBack;
-import static androidx.test.espresso.action.ViewActions.click;
-import static androidx.test.espresso.assertion.ViewAssertions.doesNotExist;
-import static androidx.test.espresso.assertion.ViewAssertions.matches;
-import static androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
-import static androidx.test.espresso.contrib.RecyclerViewActions.scrollToPosition;
-import static androidx.test.espresso.matcher.ViewMatchers.isCompletelyDisplayed;
-import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
-import static androidx.test.espresso.matcher.ViewMatchers.withId;
-import static androidx.test.espresso.matcher.ViewMatchers.withText;
-
-import androidx.test.ext.junit.rules.ActivityScenarioRule;
-
-import com.example.espresso.contrib.R;
-import com.forkingcode.espresso.contrib.DescendantViewActions;
-
-import org.junit.Rule;
-import org.junit.Test;
+import androidx.recyclerview.widget.RecyclerView
+import androidx.test.espresso.Espresso
+import androidx.test.espresso.action.ViewActions
+import androidx.test.espresso.assertion.ViewAssertions.doesNotExist
+import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
+import androidx.test.espresso.contrib.RecyclerViewActions.scrollToPosition
+import androidx.test.espresso.matcher.ViewMatchers.isCompletelyDisplayed
+import androidx.test.espresso.matcher.ViewMatchers.withContentDescription
+import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.withText
+import androidx.test.ext.junit.rules.ActivityScenarioRule
+import com.example.espresso.contrib.R
+import com.forkingcode.espresso.contrib.DescendantViewActions.checkDescendantViewAction
+import com.forkingcode.espresso.contrib.DescendantViewActions.checkViewAction
+import com.forkingcode.espresso.contrib.DescendantViewActions.performDescendantAction
+import org.junit.Rule
+import org.junit.Test
 
 /**
  * Sample test case
  */
-public class MainActivityTest {
-    @Rule
-    public ActivityScenarioRule<MainActivity> activityRule = new ActivityScenarioRule<>(MainActivity.class);
+class MainActivityTest {
+
+    @get:Rule
+    val activityRule = ActivityScenarioRule(MainActivity::class.java)
 
     @Test
-    public void testRecyclerActionFavorite() {
+    fun testRecyclerActionFavorite() {
         // By default you could only test direct actions on a recycler view. For example
         // you could "click" the view, navigate to another activity and verify conditions.
 
         // Chaining several RecyclerViewActions together.
-        onView(withId(R.id.recyclerView)).perform(
-
+        Espresso.onView(withId(R.id.recyclerView))
+            .perform(
                 // First position the recycler view. Necessary to allow the layout
                 // manager perform the scroll operation
-                scrollToPosition(15),
-
-                actionOnItemAtPosition(15, DescendantViewActions.checkDescendantViewAction(
-                        withId(R.id.title), matches(withText("Item 16")))),
+                scrollToPosition<RecyclerView.ViewHolder>(15),
+                actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                    15,
+                    checkDescendantViewAction(
+                        withId(R.id.title),
+                        matches(withText("Item 16"))
+                    )
+                ),
 
                 // Click the item to trigger navigation to detail view
-                actionOnItemAtPosition(15, click())
-        );
+                actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                    15,
+                    ViewActions.click()
+                )
+            )
 
         // Check detail view
-        onView(withId(R.id.favoriteStatus)).check(matches(withText(R.string.unfavorite)));
+        Espresso.onView(withId(R.id.favoriteStatus))
+            .check(
+                matches(withText(R.string.unfavorite))
+            )
 
         // return to main activity
-        pressBack();
+        Espresso.pressBack()
     }
 
     @Test
-    public void testRecyclerActionUnFavorite() {
+    fun testRecyclerActionUnFavorite() {
         // By default you could only test direct actions on a recycler view. For example
         // you could "click" the view, navigate to another activity and verify conditions.
 
         // Chaining several RecyclerViewActions together.
-        onView(withId(R.id.recyclerView)).perform(
-
+        Espresso.onView(withId(R.id.recyclerView))
+            .perform(
                 // First position the recycler view. Necessary to allow the layout
                 // manager perform the scroll operation
-                scrollToPosition(10),
+                scrollToPosition<RecyclerView.ViewHolder>(10),
 
                 // Using the check view action, you can now test conditions of the view at position 25
-                actionOnItemAtPosition(10, DescendantViewActions.checkViewAction(matches(isCompletelyDisplayed()))),
+                actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                    10,
+                    checkViewAction(matches(isCompletelyDisplayed()))
+                ),
 
                 // With the descendant actions provided, you can check the status of a descendant view using
                 // a standard check. Just provide way to find the descendant view and how you want to validate
                 // the view.
-                actionOnItemAtPosition(10, DescendantViewActions.checkDescendantViewAction(
-                        withId(R.id.favoriteButton), matches(withContentDescription(R.string.favorite)))),
+                actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                    10,
+                    checkDescendantViewAction(
+                        withId(R.id.favoriteButton),
+                        matches(withContentDescription(R.string.favorite))
+                    )
+                ),
 
                 // Or perform an action on a descendant view.
-                actionOnItemAtPosition(10,
-                        DescendantViewActions.performDescendantAction(withId(R.id.favoriteButton), click())),
+                actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                    10,
+                    performDescendantAction(
+                        withId(R.id.favoriteButton),
+                        ViewActions.click()
+                    )
+                ),
 
                 // With the descendant actions provided, you can check the status of a descendant view using
                 // a standard check. Just provide way to find the descendant view and how you want to validate
                 // the view.
-                actionOnItemAtPosition(10, DescendantViewActions.checkDescendantViewAction(
-                        withId(R.id.favoriteButton), matches(withContentDescription(R.string.unfavorite)))),
+                actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                    10,
+                    checkDescendantViewAction(
+                        withId(R.id.favoriteButton),
+                        matches(withContentDescription(R.string.unfavorite))
+                    )
+                ),
 
                 // Click the item to trigger navigation to detail view
-                actionOnItemAtPosition(10, click())
-        );
+                actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                    10,
+                    ViewActions.click()
+                )
+            )
 
         // Check detail view
-        onView(withId(R.id.favoriteStatus)).check(matches(withText(R.string.favorite)));
+        Espresso.onView(withId(R.id.favoriteStatus)).check(
+            matches(
+                withText(R.string.favorite)
+            )
+        )
 
         // return to main activity
-        pressBack();
+        Espresso.pressBack()
     }
 
     @Test
-    public void testFavoriteToggle() {
+    fun testFavoriteToggle() {
         // More advanced test case testing toggling the favorite status on a particular row
 
         // Chaining several actions together on the recycler view
-        onView(withId(R.id.recyclerView)).perform(
+        Espresso.onView(withId(R.id.recyclerView))
+            .perform(
 
                 // First position the recycler view
-                scrollToPosition(25),
-
-                // Using the check view action, you can now test conditions of the view at position 25
-                actionOnItemAtPosition(25, DescendantViewActions.checkViewAction(matches(isCompletelyDisplayed()))),
+                scrollToPosition<RecyclerView.ViewHolder>(25),  // Using the check view action, you can now test conditions of the view at position 25
+                actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                    25,
+                    checkViewAction(matches(isCompletelyDisplayed()))
+                ),
 
                 // With the descendant actions provided, you can check the status of a descendant view using
                 // a standard check. Just provide way to find the descendant view and how you want to validate
                 // the view.
-                actionOnItemAtPosition(25, DescendantViewActions.checkDescendantViewAction(
-                        withId(R.id.favoriteButton), matches(withContentDescription(R.string.favorite)))),
+                actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                    25,
+                    checkDescendantViewAction(
+                        withId(R.id.favoriteButton),
+                        matches(withContentDescription(R.string.favorite))
+                    )
+                ),
 
                 // Or perform an action on a descendant view.
-                actionOnItemAtPosition(25,
-                        DescendantViewActions.performDescendantAction(withId(R.id.favoriteButton), click())),
+                actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                    25,
+                    performDescendantAction(
+                        withId(R.id.favoriteButton),
+                        ViewActions.click()
+                    )
+                ),
 
                 // Then check to see the status change
-                actionOnItemAtPosition(25, DescendantViewActions.checkDescendantViewAction(
-                        withId(R.id.favoriteButton), matches(withContentDescription(R.string.unfavorite)))),
+                actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                    25,
+                    checkDescendantViewAction(
+                        withId(R.id.favoriteButton),
+                        matches(withContentDescription(R.string.unfavorite))
+                    )
+                ),
 
                 // and non-existence of a view
-                actionOnItemAtPosition(25, DescendantViewActions.checkDescendantViewAction(withId(R.id.favoriteStatus), doesNotExist()))
-
-        );
+                actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                    25,
+                    checkDescendantViewAction(
+                        withId(R.id.favoriteStatus),
+                        doesNotExist()
+                    )
+                )
+            )
     }
 }
