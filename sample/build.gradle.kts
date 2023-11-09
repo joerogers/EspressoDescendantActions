@@ -1,16 +1,17 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("org.jetbrains.kotlin.kapt")
 }
 
 android {
     namespace = "com.example.espresso.contrib"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.forkingcode.espresso.contrib.sample"
         minSdk = 21
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -37,9 +38,9 @@ android {
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.10.1")
+    implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("androidx.recyclerview:recyclerview:1.3.0")
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("androidx.cardview:cardview:1.0.0")
 
     // tests
@@ -48,7 +49,7 @@ dependencies {
     androidTestImplementation("androidx.test:rules:1.5.0")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
 
-    val espressoVersion = "3.4.0"
+    val espressoVersion = "3.5.1"
     androidTestImplementation("androidx.test.espresso:espresso-core:${espressoVersion}")
     androidTestImplementation("androidx.test.espresso:espresso-contrib:${espressoVersion}")
 
