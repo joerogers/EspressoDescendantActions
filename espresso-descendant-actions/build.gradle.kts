@@ -6,10 +6,10 @@ plugins {
 
 android {
     namespace = "com.forkingcode.espresso.contrib"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
-        minSdk = 16
+        minSdk = 19
     }
     buildTypes {
         release {
@@ -33,7 +33,7 @@ android {
 }
 
 dependencies {
-    api("androidx.test.espresso:espresso-core:3.5.0")
+    api("androidx.test.espresso:espresso-core:3.6.1")
 }
 
 // Publishing info
@@ -41,7 +41,7 @@ dependencies {
 val libraryGroupId = "com.forkingcode.espresso.contrib"
 val libraryName = "espresso-descendant-actions"
 val libraryDescription = "Custom espresso actions for working with descendant views"
-val libraryVersion = "1.5.0"
+val libraryVersion = "1.6.0"
 
 val mavenUsername = project.providers.gradleProperty("mavenUsername").getOrElse("")
 val mavenPassword = project.providers.gradleProperty("mavenPassword").getOrElse("")

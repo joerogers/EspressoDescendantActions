@@ -45,14 +45,14 @@ dependencies {
 
     // tests
     androidTestImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test:runner:1.5.2")
-    androidTestImplementation("androidx.test:rules:1.5.0")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    androidTestImplementation("androidx.test:runner:1.6.1")
+    androidTestImplementation("androidx.test:rules:1.6.1")
+    androidTestImplementation("androidx.test.ext:junit:1.2.1")
 
-    val espressoVersion = "3.5.1"
+    val espressoVersion = "3.6.1"
     androidTestImplementation("androidx.test.espresso:espresso-core:${espressoVersion}")
     androidTestImplementation("androidx.test.espresso:espresso-contrib:${espressoVersion}")
 
     //androidTestImplementation(project(":espresso-descendant-actions"))
-    androidTestImplementation("com.forkingcode.espresso.contrib:espresso-descendant-actions:1.5.0")
+    androidTestImplementation("com.forkingcode.espresso.contrib:espresso-descendant-actions:1.6.0")
 }

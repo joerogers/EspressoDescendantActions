@@ -10,6 +10,8 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        // Uncomment to test local preview
+        // mavenLocal()
     }
 }
 
