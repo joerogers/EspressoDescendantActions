@@ -18,7 +18,6 @@
         </activity>
         <activity
             android:name=".activity.DetailActivity"
-            android:label="@string/activity_detail"
             android:parentActivityName=".activity.MainActivity" />
 
     </application>

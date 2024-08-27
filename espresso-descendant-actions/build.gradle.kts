@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.forkingcode.espresso.contrib"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 19

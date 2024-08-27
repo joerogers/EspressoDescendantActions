@@ -15,6 +15,7 @@
   -->
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -41,29 +42,29 @@
 
         <ImageView
             android:id="@+id/avatar"
-            android:layout_width="72dp"
-            android:layout_height="match_parent"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:contentDescription="@null"
-            android:paddingLeft="16dp"
-            android:paddingTop="8dp"
-            android:paddingRight="16dp"
-            android:paddingBottom="8dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_account_circle_black_24dp" />
+            app:srcCompat="@drawable/ic_account_circle_black_24dp"
+            app:tint="?colorOnSurfaceVariant" />
 
         <TextView
             android:id="@+id/title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+            android:layout_marginStart="16dp"
             android:layout_weight="1"
             android:text="@{dataItem.title}"
-            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
             tools:text="Title" />
 
         <ImageButton
             android:id="@+id/favoriteButton"
-            style="@style/Base.Widget.AppCompat.Button.Borderless"
+            style="@style/Widget.AppCompat.ActionButton"
             android:layout_width="48dp"
             android:layout_height="match_parent"
             android:contentDescription="@{dataItem.favorite ? @string/unfavorite : @string/favorite}"
@@ -72,6 +73,7 @@
             android:paddingRight="8dp"
             android:scaleType="centerInside"
             android:src="@{dataItem.favorite ? @drawable/ic_star_black_24dp : @drawable/ic_star_border_black_24dp}"
+            app:tint="?colorOnSurfaceVariant"
             tools:src="@drawable/ic_star_border_black_24dp" />
     </LinearLayout>
 </layout>

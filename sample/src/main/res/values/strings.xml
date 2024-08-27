@@ -5,4 +5,6 @@
     <string name="unfavorite">Unfavorite</string>
 
     <string name="activity_detail">Item Detail</string>
+    <string name="navigate_back">Navigate back</string>
+
 </resources>

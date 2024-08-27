@@ -38,10 +38,15 @@ class MainAdapter : RecyclerView.Adapter<BindingHolder>() {
         for (i in 0 until count) {
             dataItems.add(DataItem(i))
         }
+        setHasStableIds(true)
     }
 
     override fun getItemCount(): Int {
         return dataItems.size
+    }
+
+    override fun getItemId(position: Int): Long {
+        return position.toLong()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BindingHolder {

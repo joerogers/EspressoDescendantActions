@@ -16,7 +16,11 @@
 package com.example.espresso.contrib.activity
 
 import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -26,11 +30,22 @@ import com.example.espresso.contrib.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
-        val binding =
-            DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
+        val binding: ActivityMainBinding =
+            DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         binding.recyclerView.adapter = MainAdapter()
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.recyclerView) { v, insets ->
+            val bars = insets.getInsets(WindowInsetsCompat.Type.displayCutout())
+            v.updatePadding(
+                left = v.paddingLeft + bars.left,
+                right = v.paddingRight + bars.right,
+                bottom = v.paddingBottom + bars.bottom,
+            )
+            WindowInsetsCompat.CONSUMED
+        }
     }
 }
