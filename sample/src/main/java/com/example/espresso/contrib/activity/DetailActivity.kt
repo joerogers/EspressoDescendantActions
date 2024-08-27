@@ -27,6 +27,7 @@ import androidx.core.view.updatePadding
 import androidx.databinding.DataBindingUtil
 import com.example.espresso.contrib.R
 import com.example.espresso.contrib.databinding.ActivityDetailBinding
+import com.example.espresso.contrib.ktx.doOnApplyWindowInsetsToPadding
 import com.example.espresso.contrib.model.DataItem
 
 class DetailActivity : AppCompatActivity() {
@@ -43,21 +44,34 @@ class DetailActivity : AppCompatActivity() {
         val dataItem = IntentCompat.getParcelableExtra(intent, EXTRA_DATA, DataItem::class.java)
         binding.dataItem = dataItem
 
-        ViewCompat.setOnApplyWindowInsetsListener(binding.title) { v, insets ->
-            val bars = insets.getInsets(WindowInsetsCompat.Type.displayCutout())
-            v.updatePadding(
-                left = v.paddingLeft + bars.left,
-                right = v.paddingRight + bars.right,
+        binding.appBar.doOnApplyWindowInsetsToPadding { view, windowInsetsCompat, initialPadding ->
+            val bars = windowInsetsCompat.getInsets(
+                WindowInsetsCompat.Type.systemBars() or
+                    WindowInsetsCompat.Type.displayCutout()
             )
-            binding.favoriteStatus.let { fsv ->
-                fsv.updatePadding(
-                    left = fsv.paddingLeft + bars.left,
-                    right = fsv.paddingRight + bars.right,
-                    bottom = fsv.paddingBottom + bars.bottom
-                )
-            }
+            view.updatePadding(
+                top = initialPadding.top + bars.top,
+                left = initialPadding.left + bars.left,
+                right = initialPadding.right + bars.right,
+            )
+        }
 
-            WindowInsetsCompat.CONSUMED
+        binding.favoriteStatus.doOnApplyWindowInsetsToPadding { view, windowInsetsCompat, initialPadding ->
+            val bars = windowInsetsCompat.getInsets(
+                WindowInsetsCompat.Type.systemBars() or
+                    WindowInsetsCompat.Type.displayCutout()
+            )
+            view.updatePadding(
+                left = initialPadding.left + bars.left,
+                right = initialPadding.right + bars.right,
+                bottom = initialPadding.bottom + bars.bottom
+            )
+
+            // Favorite/title share similar padding for left/right
+            binding.title.updatePadding(
+                left = initialPadding.left + bars.left,
+                    right = initialPadding.right + bars.right
+            )
         }
     }
 

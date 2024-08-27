@@ -18,7 +18,6 @@ package com.example.espresso.contrib.activity
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.databinding.DataBindingUtil
@@ -27,6 +26,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.espresso.contrib.R
 import com.example.espresso.contrib.adapter.MainAdapter
 import com.example.espresso.contrib.databinding.ActivityMainBinding
+import com.example.espresso.contrib.ktx.doOnApplyWindowInsetsToPadding
+import kotlin.math.max
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,14 +39,28 @@ class MainActivity : AppCompatActivity() {
         binding.recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         binding.recyclerView.adapter = MainAdapter()
 
-        ViewCompat.setOnApplyWindowInsetsListener(binding.recyclerView) { v, insets ->
-            val bars = insets.getInsets(WindowInsetsCompat.Type.displayCutout())
-            v.updatePadding(
-                left = v.paddingLeft + bars.left,
-                right = v.paddingRight + bars.right,
-                bottom = v.paddingBottom + bars.bottom,
+        binding.appBar.doOnApplyWindowInsetsToPadding { view, windowInsetsCompat, initialPadding ->
+            val bars = windowInsetsCompat.getInsets(
+                WindowInsetsCompat.Type.systemBars() or
+                    WindowInsetsCompat.Type.displayCutout()
             )
-            WindowInsetsCompat.CONSUMED
+            view.updatePadding(
+                top = initialPadding.top + bars.top,
+                left = initialPadding.left + bars.left,
+                right = initialPadding.right + bars.right,
+            )
+        }
+
+        binding.recyclerView.doOnApplyWindowInsetsToPadding { view, windowInsetsCompat, initialPadding ->
+            val bars = windowInsetsCompat.getInsets(
+                WindowInsetsCompat.Type.systemBars() or
+                    WindowInsetsCompat.Type.displayCutout()
+            )
+
+            view.updatePadding(
+                left = initialPadding.left + bars.left,
+                right = initialPadding.right + bars.right,
+            )
         }
     }
 }
