@@ -25,7 +25,7 @@
             type="com.example.espresso.contrib.model.DataItem" />
 
         <variable
-            name="itemClicklistener"
+            name="itemClickListener"
             type="com.example.espresso.contrib.adapter.MainAdapter.ItemClickListener" />
 
         <variable
@@ -37,7 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="?android:selectableItemBackground"
-        android:onClick="@{(view) -> itemClicklistener.onClick(view, dataItem)}"
+        android:onClick="@{(view) -> itemClickListener.onClick(view, dataItem)}"
         android:orientation="horizontal">
 
         <ImageView
@@ -46,7 +46,6 @@
             android:layout_height="40dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
             android:contentDescription="@null"
             app:srcCompat="@drawable/ic_account_circle_black_24dp"
             app:tint="?colorOnSurfaceVariant" />
@@ -66,11 +65,12 @@
             android:id="@+id/favoriteButton"
             style="@style/Widget.AppCompat.ActionButton"
             android:layout_width="48dp"
-            android:layout_height="match_parent"
+            android:layout_height="48dp"
+            android:layout_gravity="center_vertical"
             android:contentDescription="@{dataItem.favorite ? @string/unfavorite : @string/favorite}"
             android:onClick="@{(view) -> favoriteClickListener.onClick(dataItem)}"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
             android:scaleType="centerInside"
             android:src="@{dataItem.favorite ? @drawable/ic_star_black_24dp : @drawable/ic_star_border_black_24dp}"
             app:tint="?colorOnSurfaceVariant"

@@ -51,7 +51,7 @@ class MainAdapter : RecyclerView.Adapter<BindingHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BindingHolder {
         val binding = AdapterItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        binding.itemClicklistener = ItemClickListener()
+        binding.itemClickListener = ItemClickListener()
         binding.favoriteClickListener = FavoriteClickListener()
         return BindingHolder(binding)
     }
