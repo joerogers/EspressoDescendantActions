@@ -51,8 +51,9 @@ class MainActivityTest {
         Espresso.onView(withId(R.id.recyclerView))
             .perform(
                 // First position the recycler view. Necessary to allow the layout
-                // manager perform the scroll operation
-                scrollToPosition<RecyclerView.ViewHolder>(15),
+                // manager perform the scroll operation. Go one beyond our target
+                // of 15 to ensure 15 fully visible
+                scrollToPosition<RecyclerView.ViewHolder>(16),
                 actionOnItemAtPosition<RecyclerView.ViewHolder>(
                     15,
                     checkDescendantViewAction(
@@ -87,8 +88,9 @@ class MainActivityTest {
         Espresso.onView(withId(R.id.recyclerView))
             .perform(
                 // First position the recycler view. Necessary to allow the layout
-                // manager perform the scroll operation
-                scrollToPosition<RecyclerView.ViewHolder>(10),
+                // manager perform the scroll operation. Go one beyond to ensure
+                // key item visible
+                scrollToPosition<RecyclerView.ViewHolder>(11),
 
                 // Using the check view action, you can now test conditions of the view at position 25
                 actionOnItemAtPosition<RecyclerView.ViewHolder>(
@@ -153,8 +155,9 @@ class MainActivityTest {
         Espresso.onView(withId(R.id.recyclerView))
             .perform(
 
-                // First position the recycler view
-                scrollToPosition<RecyclerView.ViewHolder>(25),  // Using the check view action, you can now test conditions of the view at position 25
+                // First position the recycler view, one past target
+                scrollToPosition<RecyclerView.ViewHolder>(26),
+                // Using the check view action, you can now test conditions of the view at position 25
                 actionOnItemAtPosition<RecyclerView.ViewHolder>(
                     25,
                     checkViewAction(matches(isCompletelyDisplayed()))
