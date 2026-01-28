@@ -1,6 +1,10 @@
+import com.vanniktech.maven.publish.AndroidSingleVariantLibrary
+import com.vanniktech.maven.publish.JavadocJar
+import com.vanniktech.maven.publish.SourcesJar
+
 plugins {
     id("com.android.library")
-    id("maven-publish")
+    id("com.vanniktech.maven.publish")
     id("signing")
 }
 
@@ -21,15 +25,6 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
-
-
-    publishing {
-        singleVariant("release") {
-            // if you don't want sources/javadoc, remove these lines
-            withSourcesJar()
-            withJavadocJar()
-        }
-    }
 }
 
 dependencies {
@@ -43,70 +38,47 @@ val libraryName = "espresso-descendant-actions"
 val libraryDescription = "Custom espresso actions for working with descendant views"
 val libraryVersion = "1.6.0"
 
-val mavenUsername = project.providers.gradleProperty("mavenUsername").getOrElse("")
-val mavenPassword = project.providers.gradleProperty("mavenPassword").getOrElse("")
+mavenPublishing {
+    publishToMavenCentral()
+    signAllPublications()
 
-afterEvaluate {
-    publishing {
-        publications {
-            register<MavenPublication>("release") {
-                groupId = libraryGroupId
-                artifactId = libraryName
-                version = libraryVersion
+    configure(
+        AndroidSingleVariantLibrary(
+            javadocJar = JavadocJar.Javadoc(),
+            sourcesJar = SourcesJar.Sources(),
+            variant = "release"
+        )
+    )
 
-                pom {
-                    packaging = "aar"
+    coordinates(groupId = libraryGroupId, artifactId = libraryName, version = libraryVersion)
 
-                    // Add your description here
-                    name.set(libraryName)
-                    description.set(libraryDescription)
-                    url.set("https://github.com/joerogers/EspressoDescendantActions")
+    pom {
+        packaging = "aar"
 
-                    // Set your license
-                    licenses {
-                        license {
-                            name.set("The Apache Software License, Version 2.0")
-                            url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
-                        }
-                    }
+        // Add your description here
+        name.set(libraryName)
+        description.set(libraryDescription)
+        url.set("https://github.com/joerogers/EspressoDescendantActions")
 
-                    developers {
-                        developer {
-                            id.set("joerogers")
-                            name.set("Joe Rogers")
-                            url.set("https://github.com/joerogers")
-                        }
-                    }
-                    scm {
-                        connection.set("scm:git:git://github.com/joerogers/EspressoDescendantActions.git")
-                        developerConnection.set("scm:git:git://github.com/joerogers/EspressoDescendantActions.git")
-                        url.set("https://github.com/joerogers/EspressoDescendantActions")
-                    }
-                }
-
-                afterEvaluate {
-                    from(components["release"])
-                }
+        // Set your license
+        licenses {
+            license {
+                name.set("The Apache Software License, Version 2.0")
+                url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
             }
+        }
 
-            signing {
-                sign(publishing.publications)
+        developers {
+            developer {
+                id.set("joerogers")
+                name.set("Joe Rogers")
+                url.set("https://github.com/joerogers")
             }
-
-            repositories {
-                maven {
-                    val releasesRepoUrl =
-                        uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
-                    val snapshotsRepoUrl =
-                        uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
-                    url =
-                        if (libraryVersion.endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl
-                    credentials {
-                        username = mavenUsername
-                        password = mavenPassword
-                    }
-                }
-            }
+        }
+        scm {
+            connection.set("scm:git:git://github.com/joerogers/EspressoDescendantActions.git")
+            developerConnection.set("scm:git:git://github.com/joerogers/EspressoDescendantActions.git")
+            url.set("https://github.com/joerogers/EspressoDescendantActions")
         }
     }
 }
