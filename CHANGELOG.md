@@ -1,6 +1,14 @@
 Change Log
 ==========
 
+## Version 1.7.0
+
+_2026-01-28_
+
+* Upgrade to Espresso `3.7.0`.
+* Min sdk is now API 21
+* Compile sdk is now API 36
+
 ## Version 1.6.0
 
 _2023-07-10_

@@ -13,7 +13,7 @@ android {
     compileSdk = 36
 
     defaultConfig {
-        minSdk = 19
+        minSdk = 21
     }
     buildTypes {
         release {
@@ -28,7 +28,7 @@ android {
 }
 
 dependencies {
-    api("androidx.test.espresso:espresso-core:3.6.1")
+    api("androidx.test.espresso:espresso-core:3.7.0")
 }
 
 // Publishing info
@@ -36,7 +36,7 @@ dependencies {
 val libraryGroupId = "com.forkingcode.espresso.contrib"
 val libraryName = "espresso-descendant-actions"
 val libraryDescription = "Custom espresso actions for working with descendant views"
-val libraryVersion = "1.6.0"
+val libraryVersion = "1.7.0"
 
 mavenPublishing {
     publishToMavenCentral()
