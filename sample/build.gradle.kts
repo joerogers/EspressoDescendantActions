@@ -6,11 +6,11 @@ plugins {
 
 android {
     namespace = "com.example.espresso.contrib"
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "com.forkingcode.espresso.contrib.sample"
-        minSdk = 21
+        minSdk = 23
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
@@ -35,11 +35,11 @@ android {
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.17.0")
+    implementation("androidx.core:core-ktx:1.19.0")
     implementation("androidx.appcompat:appcompat:1.7.1")
     implementation("androidx.recyclerview:recyclerview:1.4.0")
     implementation("androidx.cardview:cardview:1.0.0")
-    implementation("com.google.android.material:material:1.13.0")
+    implementation("com.google.android.material:material:1.14.0")
 
     // Kotlin
     val kotlinBom = platform("org.jetbrains.kotlin:kotlin-bom:2.3.10")
