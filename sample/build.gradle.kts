@@ -2,6 +2,8 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     id("com.android.application")
+    // Kapt needed for data binding
+    id("com.android.legacy-kapt")
 }
 
 android {
@@ -36,13 +38,13 @@ android {
 
 dependencies {
     implementation("androidx.core:core-ktx:1.19.0")
-    implementation("androidx.appcompat:appcompat:1.7.1")
+    implementation("androidx.appcompat:appcompat:1.8.0")
     implementation("androidx.recyclerview:recyclerview:1.4.0")
     implementation("androidx.cardview:cardview:1.0.0")
     implementation("com.google.android.material:material:1.14.0")
 
     // Kotlin
-    val kotlinBom = platform("org.jetbrains.kotlin:kotlin-bom:2.3.10")
+    val kotlinBom = platform("org.jetbrains.kotlin:kotlin-bom:2.4.20")
     implementation(kotlinBom)
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
     androidTestImplementation(kotlinBom)
