@@ -37,17 +37,17 @@ android {
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.19.0")
+    implementation("androidx.core:core-ktx:1.19.1")
     implementation("androidx.appcompat:appcompat:1.8.0")
     implementation("androidx.recyclerview:recyclerview:1.4.0")
     implementation("androidx.cardview:cardview:1.0.0")
     implementation("com.google.android.material:material:1.14.0")
 
     // Kotlin
-    val kotlinBom = platform("org.jetbrains.kotlin:kotlin-bom:2.4.20")
-    implementation(kotlinBom)
+    val kotlinBom = "org.jetbrains.kotlin:kotlin-bom:2.4.21"
+    implementation(platform(kotlinBom))
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
-    androidTestImplementation(kotlinBom)
+    androidTestImplementation(enforcedPlatform(kotlinBom))
 
     // tests
     androidTestImplementation("junit:junit:4.13.2")
